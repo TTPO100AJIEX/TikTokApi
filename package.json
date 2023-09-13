@@ -1,0 +1,21 @@
+{
+    "name": "tiktok",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "author": "TTPO100AJIEX",
+    "license": "MIT",
+    "dependencies": {
+        "@fastify/circuit-breaker": "^3.2.0",
+        "@fastify/cors": "^8.3.0",
+        "@fastify/swagger": "^8.10.0",
+        "@fastify/under-pressure": "^8.3.0",
+        "fastify": "^4.23.1",
+        "mongodb": "^6.0.0",
+        "tiktok-live-connector": "^1.0.5"
+    }
+}
