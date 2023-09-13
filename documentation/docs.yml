@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  version: 8.10.0
+  title: "@fastify/swagger"
+components:
+  schemas: {}
+paths:
+  /serverstatus:
+    get:
+      responses:
+        "200":
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  metrics:
+                    type: object
+                    properties:
+                      eventLoopDelay:
+                        type: number
+                      rssBytes:
+                        type: number
+                      heapUsed:
+                        type: number
+                      eventLoopUtilized:
+                        type: number
+                  uptime:
+                    type: number
+  /account:
+    post:
+      responses:
+        "200":
+          description: Default Response
+  /gifts:
+    get:
+      parameters:
+        - schema:
+            type: integer
+            minimum: 0
+            maximum: 100
+          in: path
+          name: limit
+          required: true
+      responses:
+        "200":
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - gifts
+                  additionalProperties: false
+                  properties:
+                    gifts:
+                      type: array
+                      items:
+                        type: object
+                        required:
+                          - gifts
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                          amount:
+                            type: integer
+                          price:
+                            type: integer
+servers:
+  - url: https://localhost.xyz
+    description: Main server

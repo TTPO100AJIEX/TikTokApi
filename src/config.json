@@ -6,11 +6,11 @@
     },
     "tiktok":
     {
-        "username": "ttpo100ajiex"
+        "username": "l_unix"
     },
     "mongoDB":
     {
-        "connection": "mongodb+srv://dev:lv8LQ51Go360w4E7@db-mongodb-nyc3-65549-c5456fb2.mongo.ondigitalocean.com?retryWrites=true&w=majority&tls=true",
-        "database": "dev"
+        "connection": "mongodb://localhost:27017",
+        "database": "TikTokApi"
     }
 }

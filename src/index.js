@@ -19,7 +19,6 @@ import utility  from "./plugins/utility.js";  await app.register(utility,  direc
 import routes   from "./plugins/routes.js";   await app.register(routes,   directories);
 
 await app.ready();
-import "./jobs/tiktok_importer.js";
 
 app.listen({ port: config.website.port, host: "0.0.0.0" }, (err, address) => 
 {
