@@ -1,8 +1,10 @@
+import mongodb from '../database/mongodb.js';
+
 async function register(app, options)
 {
     const SCHEMA =
     {
-        params:
+        query:
         {
             type: "object",
             required: [ "limit" ],
@@ -16,28 +18,22 @@ async function register(app, options)
         {
             200:
             {
-                type: "array",
-                items:
+                type: "object",
+                required: [ "gifts" ],
+                additionalProperties: false,
+                properties:
                 {
-                    type: "object",
-                    required: [ "gifts" ],
-                    additionalProperties: false,
-                    properties:
+                    "gifts":
                     {
-                        "gifts":
+                        type: "array",
+                        items:
                         {
-                            type: "array",
-                            items:
+                            type: "object",
+                            additionalProperties: false,
+                            properties:
                             {
-                                type: "object",
-                                required: [ "gifts" ],
-                                additionalProperties: false,
-                                properties:
-                                {
-                                    "name": { type: "string" },
-                                    "amount": { type: "integer" },
-                                    "price": { type: "integer" }
-                                }
+                                "giftName": { type: "string" },
+                                "diamondCount": { type: "integer" }
                             }
                         }
                     }
@@ -48,6 +44,8 @@ async function register(app, options)
 
     app.get("/gifts", { schema: SCHEMA }, async (req, res) =>
     {
+        const options = { sort: { "timestamp": "asc" }, limit: req.query.limit};
+        return { gifts:  await mongodb.find({}, options).toArray() };
     });
 }
 

@@ -54,7 +54,7 @@ paths:
             type: integer
             minimum: 0
             maximum: 100
-          in: path
+          in: query
           name: limit
           required: true
       responses:
@@ -63,27 +63,21 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  required:
-                    - gifts
-                  additionalProperties: false
-                  properties:
-                    gifts:
-                      type: array
-                      items:
-                        type: object
-                        required:
-                          - gifts
-                        additionalProperties: false
-                        properties:
-                          name:
-                            type: string
-                          amount:
-                            type: integer
-                          price:
-                            type: integer
+                type: object
+                required:
+                  - gifts
+                additionalProperties: false
+                properties:
+                  gifts:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        giftName:
+                          type: string
+                        diamondCount:
+                          type: integer
 servers:
   - url: https://localhost.xyz
     description: Main server
