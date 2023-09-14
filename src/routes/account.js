@@ -1,26 +1,37 @@
 import tiktok from 'tiktok-live-connector';
-import config from "../config.json" assert { type: "json" };
+import mongodb from '../database/mongodb.js';
 
-const connection = new tiktok.WebcastPushConnection(config.tiktok.username);
-
-const state = await connection.connect();
-console.log(`Connected to tiktok roomId ${state.roomId}`);
-
-connection.on('gift', data =>
+var connection = undefined;
+async function registerGift(gift)
 {
-    console.log(data);
-    //try { manager.registerGift(data.giftName, data.diamondCount); }
-    //catch(err) { console.error(err); }
-});
+    console.log(`Received gift ${gift.giftName}`);
+    try { await mongodb.insertOne(gift); } catch(err) { console.error(err); }
+}
 
 async function register(app, options)
 {
     const SCHEMA =
     {
+        body:
+        {
+            type: "object",
+            required: [ "username" ],
+            additionalProperties: false,
+            properties:
+            {
+                "username": { type: "string" }
+            }
+        },
     };
 
     app.post("/account", { schema: SCHEMA }, async (req, res) =>
     {
+        if (connection) connection.disconnect();
+        connection = new tiktok.WebcastPushConnection(req.body.username);
+        const state = await connection.connect();
+        console.log(`Connected to tiktok ${req.body.username} roomId ${state.roomId}`);
+        connection.on('gift', registerGift);
+        await mongodb.deleteMany({});
     });
 }
 

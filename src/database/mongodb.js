@@ -1,7 +1,7 @@
 import mongodb from 'mongodb';
 import config from "../config.json" assert { type: "json" };
 
-const options = { serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true } };
+const options = { serverApi: { version: mongodb.ServerApiVersion.v1, strict: true, deprecationErrors: true } };
 const connection = new mongodb.MongoClient(config.mongoDB.connection, options);
 
 await connection.connect();

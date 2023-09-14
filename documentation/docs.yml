@@ -32,6 +32,18 @@ paths:
                     type: number
   /account:
     post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+              additionalProperties: false
+              properties:
+                username:
+                  type: string
+        required: true
       responses:
         "200":
           description: Default Response

@@ -4,10 +4,6 @@
         "host": "localhost.xyz",
         "port": 80
     },
-    "tiktok":
-    {
-        "username": "l_unix"
-    },
     "mongoDB":
     {
         "connection": "mongodb://localhost:27017",
