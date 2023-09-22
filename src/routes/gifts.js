@@ -1,4 +1,4 @@
-import mongodb from '../database/mongodb.js';
+import tiktok from "../tiktok/index.js";
 
 async function register(app, options)
 {
@@ -42,12 +42,8 @@ async function register(app, options)
         }
     };
 
-    app.get("/gifts", { schema: SCHEMA }, async (req, res) =>
-    {
-        const options = { sort: { "timestamp": "asc" }, limit: req.query.limit};
-        return { gifts:  await mongodb.find({}, options).toArray() };
-    });
+    app.get("/gifts", { schema: SCHEMA }, async (req, res) => ({ gifts: await tiktok.getGifts() }));
 }
 
 import plugin from 'fastify-plugin';
-export default plugin(register, { name: 'control-test-routes', encapsulate: false });
+export default plugin(register, { name: 'gifts-routes', encapsulate: false });
