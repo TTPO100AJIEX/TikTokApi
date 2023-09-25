@@ -26,4 +26,9 @@ export function getGifts(limit)
     return mongodb.find({}, options).toArray();
 }
 
-export default { setAccount, getGifts };
+export function getUsername()
+{
+    return connection?.getState()?.roomInfo?.owner?.display_id;
+}
+
+export default { setAccount, getGifts, getUsername };

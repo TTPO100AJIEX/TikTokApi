@@ -4,10 +4,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
+        <link rel="preconnect" hsvref="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+
         <style>
+            * { padding: 0; margin: 0; box-sizing: border-box; font-family: Inter, sans-serif, system-ui; font-size: 14px; font-weight: 400; }
+            form { display: flex; flex-direction: column; place-items: center; place-content: center; gap: 45px; width: 100vw; height: 100vh; }
+            h1 { color: #5282FF; font-size: 40px; font-weight: 900; }
+            input[type='text']
+            {
+                width: 600px; height: 50px; border-radius: 30px; border: 1px solid #E5E5E5;
+                color: #787878; padding: 0px 30px;
+            }
+            input[type='text']::placeholder { color: #E5E5E5; }
+            input[type='submit'] { border: none; width: 150px; height: 30px; border-radius: 6px; background: #5282FF; color: #FFF; }
+            p { color: #E5E5E5; }
         </style>
     </head>
     <body>
-        123
+        <form method="POST" action="/account">
+            <h1>TikTok API</h1>
+            <input type="text" name="username" placeholder="Введите имя пользователя TikTok" value="<%=username%>">
+            <input type="submit" value="Сохранить">
+            <p>Copyright © 2023 Dolix</p>
+        </form>
     </body>
 </html>

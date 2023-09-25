@@ -16,8 +16,13 @@ async function register(app, options)
         },
     };
 
-    app.post("/account", { schema: SCHEMA }, (req, res) => tiktok.setAccount(req.body.username));
-    app.get("/", (req, res) => res.render("main.ejs"));
+    app.post("/account", { schema: SCHEMA }, async (req, res) =>
+    {
+        const response = await tiktok.setAccount(req.body.username);
+        if (req.headers['content-type'] == 'application/x-www-form-urlencoded') return res.redirect("/");
+        return response;
+    });
+    app.get("/", (req, res) => res.render("main.ejs", { username: tiktok.getUsername() }));
 }
 
 import plugin from 'fastify-plugin';
