@@ -12,10 +12,16 @@ const app = fastify({
 });
 
 const BASE_DIRECTORY = path.dirname(url.fileURLToPath(import.meta.url));
-const directories = { routes_directory: path.join(BASE_DIRECTORY, "routes") };
+const directories =
+{
+    routes_directory: path.join(BASE_DIRECTORY, "routes"),
+    views_directory: path.join(BASE_DIRECTORY, "views")
+};
 
 import security from "./plugins/security.js"; await app.register(security, directories);
 import utility  from "./plugins/utility.js";  await app.register(utility,  directories);
+import request  from "./plugins/request.js";  await app.register(request,  directories);
+import response from "./plugins/response.js"; await app.register(response, directories);
 import routes   from "./plugins/routes.js";   await app.register(routes,   directories);
 
 await app.ready();

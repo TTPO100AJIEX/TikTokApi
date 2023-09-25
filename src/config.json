@@ -1,4 +1,6 @@
 {
+    "stage": "testing",
+
     "website":
     {
         "host": "localhost.xyz",

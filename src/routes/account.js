@@ -17,6 +17,7 @@ async function register(app, options)
     };
 
     app.post("/account", { schema: SCHEMA }, (req, res) => tiktok.setAccount(req.body.username));
+    app.get("/", (req, res) => res.render("main.ejs"));
 }
 
 import plugin from 'fastify-plugin';

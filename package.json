@@ -11,12 +11,17 @@
     "license": "MIT",
     "dependencies": {
         "@fastify/circuit-breaker": "^3.2.0",
-        "@fastify/cors": "^8.3.0",
+        "@fastify/compress": "^6.4.0",
+        "@fastify/cors": "^8.4.0",
+        "@fastify/formbody": "^7.4.0",
         "@fastify/rate-limit": "^8.0.3",
-        "@fastify/swagger": "^8.10.0",
+        "@fastify/swagger": "^8.10.1",
         "@fastify/under-pressure": "^8.3.0",
-        "fastify": "^4.23.1",
-        "mongodb": "^6.0.0",
+        "@fastify/view": "^8.2.0",
+        "ejs": "^3.1.9",
+        "fastify": "^4.23.2",
+        "html-minifier": "^4.0.0",
+        "mongodb": "^6.1.0",
         "tiktok-live-connector": "^1.0.5"
     }
 }
