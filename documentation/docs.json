@@ -118,6 +118,11 @@
                                                 "type": "object",
                                                 "additionalProperties": false,
                                                 "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "minimum": 0,
+                                                        "maximum": 10
+                                                    },
                                                     "giftName": {
                                                         "type": "string"
                                                     },
